@@ -17,3 +17,8 @@ spring:
     properties:
       hibernate.format_sql: true
       hibernate.show_sql: true
+
+andre:
+  app:
+    jwtSecret: "======================BezKoder=Spring==========================="
+    jwtExpirationMs: 86400000

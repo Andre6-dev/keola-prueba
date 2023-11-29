@@ -27,7 +27,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public Optional<User> selectUserByUsername(String username) {
-        return Optional.ofNullable(userRepository.findByUsername(username));
+        return userRepository.findByUsername(username);
     }
 
     @Override
