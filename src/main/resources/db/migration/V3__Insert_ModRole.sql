@@ -1,0 +1,1 @@
+INSERT INTO roles (nombre_rol) VALUES ('ROLE_MOD');

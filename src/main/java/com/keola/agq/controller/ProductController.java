@@ -11,11 +11,13 @@ import reactor.core.publisher.Mono;
 import java.util.Objects;
 import java.util.UUID;
 
+import static com.keola.agq.utils.Constants.API_BASE_PATH;
+
 /**
  * andre on 29/11/2023
  */
 @RestController
-@RequestMapping("/api/v1/products")
+@RequestMapping(API_BASE_PATH + "products")
 public class ProductController {
 
     private final ProductService productService;

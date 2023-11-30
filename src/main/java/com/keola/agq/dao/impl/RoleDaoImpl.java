@@ -19,6 +19,6 @@ public class RoleDaoImpl implements RoleDao {
 
     @Override
     public Optional<Role> selectRoleByName(String name) {
-        return roleRepository.findRoleByName(name);
+        return roleRepository.findByName(name);
     }
 }

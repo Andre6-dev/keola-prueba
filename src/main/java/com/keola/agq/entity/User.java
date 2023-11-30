@@ -44,6 +44,14 @@ public class User extends AbstractEntity {
     @ToString.Exclude
     private Set<Role> roles = new LinkedHashSet<>();
 
+    public User(String firstName, String lastName, String username, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

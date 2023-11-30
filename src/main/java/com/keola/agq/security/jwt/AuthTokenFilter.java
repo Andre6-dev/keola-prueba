@@ -19,7 +19,6 @@ import java.io.IOException;
 /**
  * andre on 29/11/2023
  */
-@Component
 public class AuthTokenFilter extends OncePerRequestFilter {
 
     @Autowired
