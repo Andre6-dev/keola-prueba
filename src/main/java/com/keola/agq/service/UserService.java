@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * andre on 29/11/2023
@@ -43,6 +44,12 @@ public class UserService {
                 .stream()
                 .map(userMapper::toDto)
                 .toList();
+    }
+
+    public UserDto findUserById(UUID id) {
+        return this.userDao.selectUserById(id)
+                .map(userMapper::toDto)
+                .orElseThrow(() -> new RuntimeException("User with id [%s] not found".formatted(id)));
     }
 
     public UserDto createUser(UserDto userDto) {

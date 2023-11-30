@@ -4,11 +4,9 @@ import com.keola.agq.dto.ProductDto;
 import com.keola.agq.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
 
-import java.util.Objects;
 import java.util.UUID;
 
 import static com.keola.agq.utils.Constants.API_BASE_PATH;
@@ -32,16 +30,19 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_MOD')")
     public ResponseEntity<Object> getProductById(@PathVariable("productId") UUID productId) {
         return ResponseEntity.ok(productService.getProductById(productId));
     }
 
     @PostMapping("/user/{userId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_MOD')")
     public ResponseEntity<Object> createProduct(@PathVariable("userId") UUID userId, @RequestBody @Valid ProductDto productDto) {
         return ResponseEntity.ok(productService.createProduct(userId, productDto));
     }
 
     @DeleteMapping("/{productId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Object> deleteProduct(@PathVariable("productId") UUID productId) {
         productService.deleteProductById(productId);
         return ResponseEntity.ok("Product deleted successfully");
